@@ -1,9 +1,12 @@
 # edu/views.py
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.decorators.cache import cache_page
 
 
+# для кеширования работы view-функции можно применить специальный декоратор
 # Главная страница
+@cache_page(60 * 15)
 def home(request):
     return HttpResponse('Главная страница')
 
