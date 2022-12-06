@@ -2,3 +2,5 @@ asgiref==3.5.2
 Django==4.1.4
 sqlparse==0.4.3
 tzdata==2022.7
+pillow-9.3.0
+sorl-thumbnail-12.9.0

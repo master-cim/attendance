@@ -14,8 +14,24 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
+    # Eсли на сервер пришёл любой запрос (''),
+    # перейди в файл urls приложения edu
+    # и проверь там все path() на совпадение с запрошенным URL
+    path('', include('edu.urls')),
+    # Если в приложении edu не найдётся совпадений -
+    # Django продолжит искать совпадения здесь, в головном файле urls.py.
+
+    # Встроенная админка Django подключена «из коробки» по адресу admin/
     path('admin/', admin.site.urls),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
+    )
