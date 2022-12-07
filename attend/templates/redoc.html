@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Техническое задание для реализации сервиса Посещаемость.СевГУ</title>
+    <meta name="description" content="Посещаемость.СевГУ. Цифровой сервис для ведения журнала «Учет посещаемости и успеваемости»">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta property="og:title" content="Посещаемость.СевГУ">
+    <meta property="og:description" content="Посещаемость.СевГУ. Цифровой сервис для ведения журнала «Учет посещаемости и успеваемости»">
+    <meta property="og:image" content="https://user-images.githubusercontent.com/3975738/37729752-8a9ea38a-2d46-11e8-8438-42ed26bf1751.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      
+      redoc {
+        display: block;
+      }
+    </style>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:300,400,700" rel="stylesheet">
+  <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+  <script defer="defer" src="redoc-demo.bundle.js"></script>
+  <style>
+    .ps {
+      overflow: hidden!important;
+      overflow-anchor: none;
+      -ms-overflow-style: none;
+      touch-action: auto;
+      -ms-touch-action: auto
+    }
+    
+    .ps__rail-x {
+      display: none;
+      opacity: 0;
+      transition: background-color .2s linear, opacity .2s linear;
+      -webkit-transition: background-color .2s linear, opacity .2s linear;
+      height: 15px;
+      bottom: 0;
+      position: absolute
+    }
+    
+    .ps__rail-y {
+      display: none;
+      opacity: 0;
+      transition: background-color .2s linear, opacity .2s linear;
+      -webkit-transition: background-color .2s linear, opacity .2s linear;
+      width: 15px;
+      right: 0;
+      position: absolute
+    }
+    
+    .ps--active-x>.ps__rail-x,
+    .ps--active-y>.ps__rail-y {
+      display: block;
+      background-color: transparent
+    }
+    
+    .ps:hover>.ps__rail-x,
+    .ps:hover>.ps__rail-y,
+    .ps--focus>.ps__rail-x,
+    .ps--focus>.ps__rail-y,
+    .ps--scrolling-x>.ps__rail-x,
+    .ps--scrolling-y>.ps__rail-y {
+      opacity: .6
+    }
+    
+    .ps .ps__rail-x:hover,
+    .ps .ps__rail-y:hover,
+    .ps .ps__rail-x:focus,
+    .ps .ps__rail-y:focus,
+    .ps .ps__rail-x.ps--clicking,
+    .ps .ps__rail-y.ps--clicking {
+      background-color: rgb(221, 248, 250);
+      opacity: .9
+    }
+    
+    .ps__thumb-x {
+      background-color: #aaa;
+      border-radius: 6px;
+      transition: background-color .2s linear, height .2s ease-in-out;
+      -webkit-transition: background-color .2s linear, height .2s ease-in-out;
+      height: 6px;
+      bottom: 2px;
+      position: absolute
+    }
+    
+    .ps__thumb-y {
+      background-color: #aaa;
+      border-radius: 6px;
+      transition: background-color .2s linear, width .2s ease-in-out;
+      -webkit-transition: background-color .2s linear, width .2s ease-in-out;
+      width: 6px;
+      right: 2px;
+      position: absolute
+    }
+    
+    .ps__rail-x:hover>.ps__thumb-x,
+    .ps__rail-x:focus>.ps__thumb-x,
+    .ps__rail-x.ps--clicking .ps__thumb-x {
+      background-color: #999;
+      height: 11px
+    }
+    
+    .ps__rail-y:hover>.ps__thumb-y,
+    .ps__rail-y:focus>.ps__thumb-y,
+    .ps__rail-y.ps--clicking .ps__thumb-y {
+      background-color: #999;
+      width: 11px
+    }
+    
+    @supports (-ms-overflow-style: none) {
+      .ps {
+        overflow: auto!important
+      }
+    }
+    
+    @media screen and (-ms-high-contrast: active),
+    (-ms-high-contrast: none) {
+      .ps {
+        overflow: auto!important
+      }
+    }
+  </style>
+  <style data-styled="active" data-styled-version="5.3.0"></style>
+</head>
+
+<nav class="navbar navbar-light" style="background-color: #81CCFE">
+  <div class="container">
+
+      <img src="{% static 'img/log.png' width="30" height="30" class="d-inline-block align-top" alt="Energynet.Master" %}">
+
+  </div>
+</nav>
+  <body>
+    <redoc spec-url='/static/redoc.yaml'></redoc>
+    <script src="https://cdn.jsdelivr.net/npm/redoc/bundles/redoc.standalone.js"> </script>
+  </body>
+</html>

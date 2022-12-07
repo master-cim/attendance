@@ -14,13 +14,14 @@ def home(request):
 # Страница преподавателя с расписанием на сегодня
 def profile(request, username):
     # Здесь код запроса к модели и создание словаря контекста
-    context = {
-        HttpResponse('Профиль преподавателя'),
-    }
-    return render(request, 'posts/profile.html', context)
+    # context = {
+    #     
+    # }
+    # return render(request, 'edu/profile.html', context)
+    return HttpResponse(f'Профиль преподавателя {username}')
 
 
 # Страница журнал посещвемости и успеваемости одной дисциплины;
 # view-функция принимает параметр pk из path()
-def progress(request, slug):
-    return HttpResponse(f'Мороженое номер {slug}')
+def progress(request, subject, group):
+    return HttpResponse(f'Дисциплина {subject}, {group}')

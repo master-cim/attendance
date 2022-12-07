@@ -8,5 +8,5 @@ urlpatterns = [
     # Страница со списком сортов мороженого
     path('profile/<str:username>/', views.profile, name='profile'),
     # Отдельная страница с информацией о сорте мороженого
-    path('progress/<slug:slug>/', views.progress_discipline),
+    path('progress/<slug:subject>/<slug:group>/', views.progress),
 ]

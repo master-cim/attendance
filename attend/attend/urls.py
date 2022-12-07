@@ -16,22 +16,24 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django.conf import settings
+# from django.conf.urls import url
 from django.conf.urls.static import static
+from django.views.generic import TemplateView
+
 
 
 urlpatterns = [
-    # Eсли на сервер пришёл любой запрос (''),
-    # перейди в файл urls приложения edu
-    # и проверь там все path() на совпадение с запрошенным URL
-    path('', include('edu.urls')),
-    # Если в приложении edu не найдётся совпадений -
-    # Django продолжит искать совпадения здесь, в головном файле urls.py.
-
-    # Встроенная админка Django подключена «из коробки» по адресу admin/
     path('admin/', admin.site.urls),
+    path(
+        'redoc/',
+        TemplateView.as_view(template_name='redoc.html'),
+        name='redoc'
+    ),
+    path('edu/', include('edu.urls'))
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(
-        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
-    )
+
+# if settings.DEBUG:
+#     urlpatterns += static(
+#         settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
+#     )
