@@ -287,19 +287,19 @@ paths:
       - jwt-token:
         - write:admin
 
-  /titles/:
+  /progress/:
     get:
       tags:
-        - TITLES
-      operationId: Получение списка всех произведений
+        - PROGRESS
+      operationId: Получение журнала посещаемости и успеваемости
       description: |
         Получить список всех объектов.
 
         Права доступа: **Доступно без токена**
       parameters:
-        - name: category
+        - name: raspisanie
           in: query
-          description: фильтрует по полю slug категории
+          description: фильтрует по полю id расписание
           schema:
             type: string
         - name: genre
@@ -375,9 +375,9 @@ paths:
       security:
       - jwt-token:
         - write:admin
-  /titles/{titles_id}/:
+  /progress/{progress_id}/:
     parameters:
-      - name: titles_id
+      - name: progress_id
         in: path
         required: true
         description: ID объекта
@@ -385,10 +385,10 @@ paths:
           type: integer
     get:
       tags:
-        - TITLES
-      operationId: Получение информации о произведении
+        - PROGRESS
+      operationId: Получение информации о посещении
       description: |
-        Информация о произведении
+        Информация о посещении дисциплины
 
 
         Права доступа: **Доступно без токена**
@@ -403,7 +403,7 @@ paths:
           description: Объект не найден
     patch:
       tags:
-        - TITLES
+        - PROGRESS
       operationId: Частичное обновление информации о произведении
       description: |
         Обновить информацию о произведении
@@ -433,7 +433,7 @@ paths:
         - write:admin
     delete:
       tags:
-        - TITLES
+        - PROGRESS
       operationId: Удаление произведения
       description: |
         Удалить произведение.
@@ -447,14 +447,14 @@ paths:
         403:
           description: Нет прав доступа
         404:
-          description: Произведение не найдено
+          description: Посещаемость группы не найдена
       security:
       - jwt-token:
         - write:admin
-
-  /titles/{title_id}/reviews/:
+# reviews заменить на groups
+  /progress/{disciplina_name}/groups/:
     parameters:
-      - name: title_id
+      - name: disciplina_name
         in: path
         required: true
         description: ID произведения
@@ -523,9 +523,9 @@ paths:
       security:
       - jwt-token:
         - write:user,moderator,admin
-  /titles/{title_id}/reviews/{review_id}/:
+  /progress/{disciplina_name}/groups/{review_id}/:
     parameters:
-      - name: title_id
+      - name: disciplina_name
         in: path
         required: true
         description: ID произведения
@@ -610,9 +610,9 @@ paths:
       - jwt-token:
         - write:user,moderator,admin
 
-  /titles/{title_id}/reviews/{review_id}/comments/:
+  /progress/{disciplina_name}/groups/{review_id}/comments/:
     parameters:
-      - name: title_id
+      - name: disciplina_name
         in: path
         required: true
         description: ID произведения
@@ -688,9 +688,9 @@ paths:
       - jwt-token:
         - write:user,moderator,admin
 
-  /titles/{title_id}/reviews/{review_id}/comments/{comment_id}/:
+  /progress/{disciplina_name}/groups/{review_id}/comments/{comment_id}/:
     parameters:
-      - name: title_id
+      - name: disciplina_name
         in: path
         required: true
         description: ID произведения
